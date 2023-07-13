@@ -23,9 +23,9 @@ $(document).ready((e) => {
             if (res.length > 0) {
                 res.forEach(vent => {
                     i++
-                    table.innerHTML +="<tr id='fav"+i+"'><th scope='row'>"+i+"</th><td><p>"+vent.venta_estado+"</p></td><td><h5>"+vent.venta_fecha+"</h5></td><td><p>"+vent.rep_nombre+"</p></td><td><button data-bs-toggle='modal'  data-bs-target='#car"+vent.venta_codigo+"'>Mas</button></td></tr>" +
-                      '<!-- Modal --><div  class="modal fade w-25"  id="car'+vent.venta_codigo+'"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body">' +
-                        "<h1 class='text-center text-success'>" +
+                    table.innerHTML +="<tr id='fav"+i+"'><th scope='row'>"+i+"</th><td><p>"+vent.venta_estado+"</p></td><td><h5>"+vent.venta_fecha+"</h5></td><td><p>"+vent.rep_nombre+"</p></td><td><button data-bs-toggle='modal' data-bs-target='#car"+vent.venta_codigo+"' class='botonMas' >Mas</button></td></tr>" +
+                      '<!-- Modal --><div  class="modal fade w-25"  id="car'+vent.venta_codigo+'"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modalCom modal-dialog modal-dialog-centered"><div class=" modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body2">' +
+                        "<h1 class='tituloREP text-center text-success'>" +
                         vent.rep_nombre +
                         "</h1><p class='contenido '>" +
                         vent.venta_fecha +

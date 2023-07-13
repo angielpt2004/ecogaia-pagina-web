@@ -204,6 +204,53 @@ li a {
   color: white;
 }
 
+/* Modal -----------------------------*/
+.compra{
+  border: rgba(255, 255, 255, 0.53) 2px solid;
+  margin-top: 6%;
+  border-radius: 10px;
+  background-color: #9999990c;
+}
+.compra h1{
+  font-family: "Quicksand", sans-serif;
+  margin-top: 15px;
+  
+}
+
+.modal-header h1{
+  font-family: "Quicksand", sans-serif;
+  
+}
+.modal-header{
+  background-color: rgba(0, 0, 0, 0.955);
+  color: white;
+}
+
+.modal-body2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.955);
+}
+
+.modal-body2 h1 {
+  font-size: 20px;
+}
+.modal-body2 .contenido {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.tituloREP{
+  margin-top: 10%;
+  font-family: 'Charm', cursive;
+}
+.modalCom{
+  color: rgba(255, 255, 255, 0.749);
+  text-align: center;
+}
+
+
 /* Modal --------------------------------------------------------------------------*/
 
 .modal {
@@ -429,6 +476,13 @@ p.price {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.tituloInv{
+  color: aliceblue;
+  font-family: "Charm", cursive;
+  font-size: 38px;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .titulos tr th{
@@ -1278,7 +1332,7 @@ h3{
 }
 
 .item{
-    margin-left: 23%;
+   
     text-transform: uppercase;
     font-family: 'Quicksand', sans-serif;
     font-size: 15px;
@@ -1288,11 +1342,13 @@ h3{
     position: relative;
     line-height: 40px;
     height: 40px;
+    cursor: pointer;
 }
+
 
 .barra-navegacion .item:first-of-type::after{
     content: "";
-    height: 1px;
+    height: 2px;
     width: 100%;
     top: -1px;
     left: 0;
@@ -1309,6 +1365,25 @@ h3{
   margin-top: 2%;
   margin-left: 62%;
 }
+.table{
+  padding: 3px;
+}
+.table th{
+  
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+.table tbody{
+  color: #609966;
+}
+.botonMas{
+  font-size: 22px;
+  color: white;
+  font-family: 'Charm', cursive;
+   width: 0px;
+}
+
+
 
 
 @media screen and (min-width:320px) and (max-width:620px){
@@ -1498,10 +1573,6 @@ h3{
     .barra-navegacion{
         height: 40px;
         width: 90%;
-    }
-    
-    .item{
-        margin-left: 30%;
     }
     
     .barra-navegacion .item:first-of-type::after{
