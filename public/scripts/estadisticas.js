@@ -13,7 +13,7 @@ $(document).ready(() => {
             datatype: "JSON",
             success: (res) => {
                 var porcentaje = parseFloat(res.toString().slice(0,4))
-                est.innerHTML += '<p>'+(fecha.getFullYear()-i).toString()+'</p><div class="barra2 border border-secondary" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><div id="barcontenedor" class="progress-bar bg-secondary" style="width: '+porcentaje+'%"><span>&nbsp;</span></div><span class="porcentaje">'+porcentaje+'%</span></div>'
+                est.innerHTML += '<p>'+(fecha.getFullYear()-i).toString()+'</p><div class="barra2 border-bottom" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><div id="barcontenedor" class="progress-bar bg-success" style="width: '+porcentaje+'%"><span>&nbsp;</span></div><span class="porcentaje">'+porcentaje+'%</span></div>'
                 
             }
         })

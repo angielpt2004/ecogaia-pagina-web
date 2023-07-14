@@ -405,9 +405,33 @@ p.price {
   width: auto;
 }
 
+/*redes sociales--------------------------------------------------------------------------*/
+.redes img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+.redes{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  float: right;
+  z-index: 0;
+  bottom: 20px;
+  right: 50px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.redes img:hover {
+  transform: scale(1.2);
+}
+
+
+
+
+
 /* Añadir CARRITO ------------------------------------------------------------*/
 
-.titCarrito th {
+.table .titCarrito th {
   color: #609966;
 }
 .offcanvas-header {
@@ -595,20 +619,13 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 30px;
-}
-.blogN h3 {
-  color: #609966;
-  font-weight: bold;
-  font-size: 45px;
-  font-family: "Charm", cursive;
 }
 
 .blog-heading h3 {
-  margin-top: 5%;
+  margin-top: 25%;
   color: #609966;
   font-size: 40px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Charm", cursive;
 }
 
 .blog_in {
@@ -1129,14 +1146,15 @@ form h2 {
 }
 .statics{
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    
 }
 .statics2{
     width: 10%;
     height: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 2%;
-    background-color: #6099664e; 
+    border: #609966 1px solid;   
 }
 
 .statics2 h3{
@@ -1152,19 +1170,18 @@ form h2 {
 }
 
 h3{
-    color: white;
+    color: #609966;
     text-align: center; 
 }
 
 .barras{
     width: 25%;
-    height: 400px;
+    height: 480px;
     margin-top: 5%;
     margin-left: 2%;
-    background-color: #6099664e;   
+    color: #38d39f;  
 }
 .barras h3{
-    color: white;
     text-align: center;
     margin-top: 2%;
     font-family: 'Quicksand', sans-serif;
@@ -1369,7 +1386,6 @@ h3{
   padding: 3px;
 }
 .table th{
-  
   color: white;
   font-family: 'Quicksand', sans-serif;
 }
@@ -1637,28 +1653,32 @@ h3{
     }
 
     /*Estadisticas ------------------------------------------------------------------*/
-  .estadisticas{ 
-    flex-direction: column; 
-    margin-left: 5%;
-  }
+    .estadisticas{ 
+      flex-direction: column; 
+      margin-left: 5%;
+    }
   
-  .statics2{
-    width: 35%;
-    height: 35%;
-    background-color: #6099664e; 
-  }
+    .statics2{
+      width: 35%;
+      height: 35%;
+      
+    }
+    .barras{
+      margin: 2% auto;
+      width: 90%;
+      height: 450px;
+      margin-left: 2%;
+    }
 
-  
-
-  .barras{
-    margin: 5% auto;
-    width: 90%;
-    height: 400px;
-    margin-top: 5%;
-    margin-left: 2%;
-    background-color: #6099664e;  
-  }
-  
+   /*redes--------------------*/ 
+    .redes img {
+      width: 30px;
+      margin-bottom: 10px;
+    }
+    .redes{
+      bottom: 10px;
+      right: 10px;
+    }
           
 }
 
