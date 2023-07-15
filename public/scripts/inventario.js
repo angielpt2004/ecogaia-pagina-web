@@ -46,7 +46,7 @@ $(document).ready(function () {
       invt.prod_Imagen +'" alt="inventario">'+
 
 
-      '<h2 class="nombre-pro text-success">'+invt.prod_Nombre+'</h2>'+
+      '<h2 class="nombre-pro text-success" id="prod_Nom">'+invt.prod_Nombre+'</h2>'+
       '<p class="cate-pro">'+ invt.prod_Categoria +'</p>'+
       '<span class="precio-pro">'+ invt.prod_Precio +'</span>'+
       '<p class="cant-prod">'+ invt.prod_Cantidad +' </p>'+
@@ -68,27 +68,8 @@ $(document).ready(function () {
     type: "GET",
     dataType: "JSON",
     success: function (respuesta) {
-
-      listarnormal(respuesta, tabla_p)
-
-      window.addEventListener("resize", () =>{
-
-        const largo = window.innerHeight
-        const ancho = window.innerWidth
-
-        if (largo > 529 && ancho > 289){
-
-          tabla_p.innerHTML = ""
-          listarnormal(respuesta, tabla_p) 
-
-        }else {
-          
-          cartas_producto.innerHTML = ""
-          listarresponsive(respuesta, cartas_producto)
-        }
-
-      })
-
+        listarnormal(respuesta, tabla_p) 
+        listarresponsive(respuesta, cartas_producto)
     },
 
   });
@@ -254,7 +235,7 @@ $("#userAct").submit(function (event) {
 
 const carousel = document.querySelector(".carousel");
 const arrowBtns = document.querySelectorAll(".wrapper i");
-const firstCardWidth = carousel.querySelector(".card-invt").offsetWidth;
+const firstCardWidth = carousel.querySelector(".card-invt");
 
 let isDragging = false, startX, startScrollLeft;
 
