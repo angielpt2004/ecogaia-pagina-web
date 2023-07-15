@@ -4,6 +4,7 @@ $(document).ready(function () {
   var tabla_p = $("#tabla-productos")[0];
   var tabla_u = $("#tabla-usuarios")[0];
   $(".barra")[0].style.backgroundColor = "#000000";
+  $(".barra-responsive")[0].style.backgroundColor = "#000000";
   if (sessionStorage.getItem("status") == "repartidor") {
     $("#buttons")[0].style.display = "none";
   }
@@ -185,12 +186,4 @@ $("#userAct").submit(function (event) {
       alert(res)
     },
   });
-});
-
-$(".btn-hamburguesa").on("click", () => {
-  $(".barra")[0].style.display = "block";
-});
-
-$(".cerrar_barra").on("click", () => {
-  $(".barra")[0].style.display = "none";
 });

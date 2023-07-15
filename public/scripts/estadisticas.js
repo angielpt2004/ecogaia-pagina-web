@@ -2,6 +2,7 @@ import { on_session } from "./index.js";
 
 $(document).ready(() => {
     $(".barra")[0].style.backgroundColor = "#000000"
+    $(".barra-responsive")[0].style.backgroundColor = "#000000";
     var mas = $("#mas")[0]
     var menos = $("#menos")[0]
     var est = $("#estadisticas-content")[0]
@@ -58,12 +59,4 @@ $(document).ready(() => {
             $("#cant_ventas")[0].innerHTML = "- "+ res.length + " -"
         }
     })
-})
-
-$(".btn-hamburguesa").on("click", () => {
-  $(".barra")[0].style.display = "block"
-})
-
-$(".cerrar_barra").on("click", () => {
-  $(".barra")[0].style.display = "none"
 })

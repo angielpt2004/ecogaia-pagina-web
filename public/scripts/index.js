@@ -244,6 +244,7 @@ $(".btn-hamburguesa").on("click", () => {
   $(".barra")[0].style.display = "block";
 });
 
-$(".cerrar_barra").on("click", () => {
+$(".cerrar_barra").on("click", (event) => {
   $(".barra")[0].style.display = "none";
+  event.preventDefault();
 });
