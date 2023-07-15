@@ -169,33 +169,6 @@
       </table>
     </div>
 
-
-
-
-    <!-- Botones CRUD -->
-
-    <div class="btn_crud" id="buttons">
-      <form id="insertProducto" class="addGestion" method="post" enctype="multipart/form-data">
-        <input type="submit" class="btn-insert" value="Insertar" />
-        <input type="text" class="text-light" id="prod_Nombre" placeholder="Nombre" />
-        <input type="file" name="file" required />
-        <input type="text" id="prod_Categoria" class="text-light" placeholder="Categoria" />
-        <input type="text" id="prod_Cantidad" class="text-light" placeholder="Cantidad" />
-        <input type="text" id="prod_Precio" class="text-light" placeholder="Precio" />
-      </form>
-    </div>
-
-    <div class="btn_crud mb-5" id="buttons">
-      <form id="actProducto" class="addGestion" method="post" enctype="multipart/form-data">
-        <input type="submit" class="btn-insert" value="Actualizar" />
-        <input type="text" class="text-light" id="actProdNombre" placeholder="Nombre" />
-        <input type="file" name="file" id="actProdImagen" />
-        <input type="text" id="actProdCategoria" class="text-light" placeholder="Categoria" />
-        <input type="text" id="actProdCantidad" class="text-light" placeholder="Cantidad" />
-        <input type="text" id="actProdPrecio" class="text-light" placeholder="Precio" />
-      </form>
-    </div>
-
     <!-- Formularios inventario Empresa -->
 
     <div class="crud-invt">
@@ -203,14 +176,14 @@
       <!-- Insertar -->
 
       <div class="actualizar-invt">
-        <form class="formulario-act" action="">
-          <h2 class="mt-5">Agregar</h2>
+        <form id="insertProducto" method="post" class="formulario-act" action="">
+          <h2 class="mt-5" >Agregar</h2>
           <div class="input-div">
             <div class="i">
               <i class="fas fa-user"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" id="nombre" placeholder="Nombre Completo" />
+              <input class="inputIn" type="text" id="prod_Nombre" placeholder="Nombre Completo" />
             </div>
           </div>
           <div class="input-div">
@@ -218,7 +191,7 @@
               <i class="fas fa-envelope"></i>
             </div>
             <div>
-              <input class="inputIn" type="file" placeholder="Imagen" id="Imagen" />
+              <input class="inputIn" type="file" name="file" placeholder="Imagen" id="prod_Imagen" />
             </div>
           </div>
           <div class="input-div">
@@ -226,7 +199,7 @@
               <i class="fas fa-tent"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Categoria" id="Categoria" />
+              <input class="inputIn" type="text" placeholder="Categoria" id="prod_Categoria" />
             </div>
           </div>
           <div class="input-div">
@@ -234,7 +207,7 @@
               <i class="fas fa-unlock"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Cantidad" id="Cantidad" />
+              <input class="inputIn" type="text" placeholder="Cantidad" id="prod_Cantidad" />
             </div>
           </div>
           <div class="input-div">
@@ -242,14 +215,14 @@
               <i class="fas fa-lock"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Precio" id="Precio" />
+              <input class="inputIn" type="text" placeholder="Precio" id="prod_Precio" />
             </div>
           </div>
 
 
           <!--boton-------------->
 
-          <button class="btn-invt" type="button" id="actualizar">
+          <button class="btn-invt" type="submit" id="actualizar">
             <span>Agregar</span>
           </button>
         </form>
@@ -258,14 +231,14 @@
       <!-- Actualizar -->
 
       <div class="actualizar-invt">
-        <form class="formulario-act" action="">
-          <h2 class="mt-5">Actualizar</h2>
+        <form id="actProducto" class="formulario-act" action="">
+          <h2 class="mt-5" >Actualizar</h2>
           <div class="input-div">
             <div class="i">
               <i class="fas fa-user"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" id="nombre" placeholder="Nombre Completo" />
+              <input class="inputIn" type="text" id="actProdNombre" placeholder="Nombre Completo" />
             </div>
           </div>
           <div class="input-div">
@@ -273,7 +246,7 @@
               <i class="fas fa-envelope"></i>
             </div>
             <div>
-              <input class="inputIn" type="file" placeholder="Imagen" id="Imagen" />
+              <input class="inputIn" type="file" name="file" placeholder="Imagen" id="actProdImagen" />
             </div>
           </div>
           <div class="input-div">
@@ -281,7 +254,7 @@
               <i class="fas fa-tent"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Categoria" id="Categoria" />
+              <input class="inputIn" type="text" placeholder="Categoria" id="actProdCategoria" />
             </div>
           </div>
           <div class="input-div">
@@ -289,7 +262,7 @@
               <i class="fas fa-unlock"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Cantidad" id="cantidad" />
+              <input class="inputIn" type="text" placeholder="Cantidad" id="actProdCantidad" />
             </div>
           </div>
           <div class="input-div">
@@ -297,13 +270,13 @@
               <i class="fas fa-lock"></i>
             </div>
             <div>
-              <input class="inputIn" type="text" placeholder="Precio" id="precio" />
+              <input class="inputIn" type="text" placeholder="Precio" id="actProdPrecio" />
             </div>
           </div>
 
           <!--boton-------------->
 
-          <button class="btn-invt" type="button" id="actualizar">
+          <button class="btn-invt" type="submit" id="actualizar">
             <span>Actualizar</span>
           </button>
         </form>
