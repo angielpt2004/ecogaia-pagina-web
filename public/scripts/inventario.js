@@ -2,10 +2,64 @@ import { on_session } from "./index.js";
 
 $(document).ready(function () {
   var tabla_p = $("#tabla-productos")[0];
-  var tabla_u = $("#tabla-usuarios")[0];
+  var carrusel_u = $("#carrusel_u")[0];
+  var cartas_producto = $("#cartas_producto")[0]; 
+
   $(".barra")[0].style.backgroundColor = "#000000";
   if (sessionStorage.getItem("status") == "repartidor") {
     $("#buttons")[0].style.display = "none";
+  }
+
+  function listarnormal (respuesta, tabla_p ){
+    
+    respuesta.forEach(function (invt) {
+
+      tabla_p.innerHTML +=
+        '<tr><td><i class="fas fa-trash" onclick="delProducto(' +
+        invt.prod_Codigo +
+        ')"></i></td><td style="text-align: start;">' +
+        invt.prod_Nombre +
+        "</td><td>" +
+        invt.prod_Imagen +
+        "</td><td>" +
+        invt.prod_Categoria +
+        "</td><td>" +
+        invt.prod_Cantidad +
+        "</td><td>" +
+        invt.prod_Precio +
+        "</td>" +
+        '</td><td><i onClick="actProd(' + invt.prod_Codigo + ')" class="fas fa-pencil"></i></td></tr>'
+    });
+
+  }
+
+  function listarresponsive( respuesta, cartas_producto) {
+
+    var cartas_producto = $("#cartas_producto")[0];
+
+    respuesta.forEach(function (invt) {
+      cartas_producto.innerHTML +=
+      '<div class="contenido-inventario">'+
+
+      '<img src="'+
+      invt.prod_Imagen +'" alt="inventario">'+
+
+
+      '<h2 class="nombre-pro text-success">'+invt.prod_Nombre+'</h2>'+
+      '<p class="cate-pro">'+ invt.prod_Categoria +'</p>'+
+      '<span class="precio-pro">'+ invt.prod_Precio +'</span>'+
+      '<p class="cant-prod">'+ invt.prod_Cantidad +' </p>'+
+
+      '<div class="iconos-invt">'+
+          '<button class="boton-pro elimi" type="button" id="eliminar-pro"  onclick="delProducto(' +
+          invt.prod_Codigo +')" ><span>Eliminar</span></button>'+
+          '<button class="boton-pro  actu" type="button" id="actualizar-pro" onClick="actProd(' + invt.prod_Codigo + ')" ><span>Actualizar</span></button>'+
+      '</div>'+
+
+    '</div>'
+
+    });
+
   }
 
   $.ajax({
@@ -13,24 +67,29 @@ $(document).ready(function () {
     type: "GET",
     dataType: "JSON",
     success: function (respuesta) {
-      respuesta.forEach(function (invt) {
-        tabla_p.innerHTML +=
-          '<tr><td><i class="fas fa-trash" onclick="delProducto(' +
-          invt.prod_Codigo +
-          ')"></i></td><td style="text-align: start;">' +
-          invt.prod_Nombre +
-          "</td><td>" +
-          invt.prod_Imagen +
-          "</td><td>" +
-          invt.prod_Categoria +
-          "</td><td>" +
-          invt.prod_Cantidad +
-          "</td><td>" +
-          invt.prod_Precio +
-          "</td>" +
-          '</td><td><i onClick="actProd('+invt.prod_Codigo+')" class="fas fa-pencil"></i></td></tr>'
-      });
+
+      listarnormal(respuesta, tabla_p)
+
+      window.addEventListener("resize", () =>{
+
+        const largo = window.innerHeight
+        const ancho = window.innerWidth
+
+        if (largo > 529 && ancho > 289){
+
+          tabla_p.innerHTML = ""
+          listarnormal(respuesta, tabla_p) 
+
+        }else {
+          
+          cartas_producto.innerHTML = ""
+          listarresponsive(respuesta, cartas_producto)
+        }
+
+      })
+
     },
+
   });
 
   $.ajax({
@@ -39,28 +98,31 @@ $(document).ready(function () {
     dataType: "JSON",
     success: function (respuesta) {
       respuesta.forEach(function (invt) {
-        tabla_u.innerHTML +=
-          '<tr><td><i class="fas fa-trash" onclick="delUsuario(' +
+        carrusel_u.innerHTML +=
+          '<li class="card-invt">' +
+          '<div class="img"><img src="../../public/assets/persona.jpg" alt="img" draggable="false"></div>' +
+          '<h2 class="name">' + invt.usu_nombre + '</h2>' +
+          '<span class="rol">' + invt.rol + '</span>' +
+          '<span class="direccion">' + invt.usu_direccion + '</span>' +
+          '<p class="correo-invt">' + invt.usu_correo + '</p>' +
+          '<p class="telefono-invt">' + invt.usu_telefono + '</p>' +
+
+          '<div class="botones-invt">' +
+          '<button class="btninvt eliminar" type="button" onclick="delUsuario(' +
           invt.id_Usuario +
-          ')"></i></td><td style="text-align: start;">' +
-          invt.usu_nombre +
-          "</td><td>" +
-          invt.rol +
-          "</td><td>" +
-          invt.usu_correo +
-          "</td><td>" +
-          invt.usu_direccion +
-          "</td><td>" +
-          invt.usu_telefono +
-          "</td>" +
-          '<td><i onClick="actUsu(\''+invt.usu_correo+'\')" class="fas fa-pencil"></i></td>';
+          ')"><span>Eliminar</span></button>' +
+          '<button class="btninvt actualizar" type="button" onClick="actUsu(\'' +
+          invt.usu_correo + '\')"><span>Actualizar</span></button>' +
+          '</div>' +
+
+          '</li>'
       });
     },
   });
-  
+
   $("#insertProducto").submit(function (event) {
     event.preventDefault();
-  
+
     const newprod = {
       prod_Nombre: $("#prod_Nombre").val(),
       prod_Imagen: $("#prod_Imagen").val(),
@@ -68,7 +130,7 @@ $(document).ready(function () {
       prod_Cantidad: $("#prod_Cantidad").val(),
       prod_Precio: $("#prod_Precio").val(),
     };
-  
+
     $.ajax({
       url: "http://localhost:8080/insertarProducto",
       type: "POST",
@@ -142,7 +204,7 @@ $("#actProducto").submit(function (event) {
           type: "PUT",
           data: newprod,
           success: (res2) => {
-          var formData = new FormData($(this)[0]);
+            var formData = new FormData($(this)[0]);
             $.ajax({
               url: "http://localhost:8080/guardarImagen/" + res[0].prod_Codigo,
               type: "POST",
@@ -186,6 +248,45 @@ $("#userAct").submit(function (event) {
     },
   });
 });
+
+/* Carrusel usuarios */
+
+const carousel = document.querySelector(".carousel");
+const arrowBtns = document.querySelectorAll(".wrapper i");
+const firstCardWidth = carousel.querySelector(".card-invt").offsetWidth;
+
+let isDragging = false, startX, startScrollLeft;
+
+arrowBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+  });
+});
+
+const dragStart = (e) => {
+  isDragging = true;
+  carousel.classList.add("dragging");
+  startX = e.pageX;
+  startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+  if (!isDragging) return;
+  carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = () => {
+  isDragging = false;
+  carousel.classList.remove("dragging")
+}
+
+carousel.addEventListener("mousemove", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+
+
+
+/* Barra Responsive */
 
 $(".btn-hamburguesa").on("click", () => {
   $(".barra")[0].style.display = "block";
