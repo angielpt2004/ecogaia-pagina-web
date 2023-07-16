@@ -2,6 +2,7 @@ import { on_session } from "./index.js";
 
 $(document).ready(function(){
     $(".barra")[0].style.backgroundColor = "#000000"
+    $(".barra-responsive")[0].style.backgroundColor = "#000000";
     $.ajax({
         url:"http://localhost:8080/distribuir/" + sessionStorage.getItem("user"),
         type: "GET",
@@ -32,12 +33,4 @@ $(document).ready(function(){
             });
         }
     })
-})
-
-$(".btn-hamburguesa").on("click", () => {
-    $(".barra")[0].style.display = "block"
-})
-
-$(".cerrar_barra").on("click", () => {
-    $(".barra")[0].style.display = "none"
 })

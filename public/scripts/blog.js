@@ -97,7 +97,7 @@ $(document).ready(() => {
         if(res != "No se agrego el tip"){
           alerta.style.background="#EBD166"
           mostrarOculto(res)
-          window.location.href = "./blog.html"
+          window.location.href = "/templates/views/Blog.html"
         }else{
           alerta.style.background="#EBD166"
           mostrarOculto(res)
@@ -113,16 +113,3 @@ $(document).ready(() => {
   }
   })
 })  
-
-$(".btn-hamburguesa").on("click", () => {
-  $(".barra")[0].style.display = "block"
-})
-
-$(".cerrar_barra").on("click", () => {
-  $(".barra")[0].style.display = "none"
-})
-
-
-
-
-
