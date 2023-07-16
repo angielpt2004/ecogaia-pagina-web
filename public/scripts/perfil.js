@@ -2,6 +2,7 @@ import { mostrarOcultoSuccess, on_session } from "./index.js";
 
 $(document).ready((e) => {
   $(".barra")[0].style.backgroundColor = "#000000";
+  $(".barra-responsive")[0].style.backgroundColor = "#000000";
   var user = sessionStorage.getItem("user");
 
   const header = document.getElementById("header");
@@ -97,15 +98,6 @@ $(document).ready((e) => {
     });
   });
 });
-
-$(".btn-hamburguesa").on("click", () => {
-  $(".barra")[0].style.display = "block";
-});
-
-$(".cerrar_barra").on("click", () => {
-  $(".barra")[0].style.display = "none";
-});
-
 
 function favoritos (user, table) {
     header.innerHTML =

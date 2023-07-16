@@ -128,8 +128,14 @@ $(document).ready(() => {
       dataType: "text",
       success: (res) => {
         if(res != "No se agrego el tip"){
+<<<<<<< HEAD
           mostrarOcultoError(res)
           window.location.href = "./blog.html"
+=======
+          alerta.style.background="#EBD166"
+          mostrarOculto(res)
+          window.location.href = "/templates/views/Blog.html"
+>>>>>>> 23d2358874a8759ccf283697863f68a25033f226
         }else{
           alerta.style.background="#EBD166"
           mostrarOcultoSuccess(res)
@@ -145,16 +151,3 @@ $(document).ready(() => {
   }
   })
 })  
-
-$(".btn-hamburguesa").on("click", () => {
-  $(".barra")[0].style.display = "block"
-})
-
-$(".cerrar_barra").on("click", () => {
-  $(".barra")[0].style.display = "none"
-})
-
-
-
-
-
