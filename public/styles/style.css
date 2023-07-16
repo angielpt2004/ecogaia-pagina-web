@@ -204,7 +204,7 @@ li a {
   color: white;
 }
 
-/* Modal -----------------------------*/
+/* Modal COMPRAAAAAAAAAAA-----------------------------*/
 .compra{
   border: rgba(255, 255, 255, 0.53) 2px solid;
   margin-top: 6%;
@@ -217,30 +217,18 @@ li a {
   
 }
 
-.modal-header h1{
+.modal-header2 h1{
   font-family: "Quicksand", sans-serif;
   
 }
-.modal-header{
-  background-color: rgba(0, 0, 0, 0.955);
-  color: white;
-}
-
-.modal-body2 {
+.modal-header2{
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 10px ;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.955);
 }
 
-.modal-body2 h1 {
-  font-size: 20px;
-}
-.modal-body2 .contenido {
-  padding-left: 10px;
-  padding-right: 10px;
-}
+
 .tituloREP{
   margin-top: 10%;
   font-family: 'Charm', cursive;
@@ -251,11 +239,8 @@ li a {
 }
 
 
-/* Modal --------------------------------------------------------------------------*/
+/* Modal PRODUCTOS--------------------------------------------------------------------------*/
 
-.modal {
-  margin-left: 38%;
-}
 
 .body-car {
   display: flex;
@@ -558,19 +543,7 @@ p.price {
 }
 
 /*nosotros y blogs---------------------------------------------------------------------*/
-.box {
-  margin-top: 2%;
-  margin-left: 35%;
-  background-color: white;
-  width: 500px;
-  height: 35px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 15px #609966;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 25px;
-}
+
 input {
   width: 140px;
   border: none;
@@ -1382,6 +1355,120 @@ h3{
   font-family: 'Charm', cursive;
    width: 0px;
 }
+
+
+.oculto {
+  display: flex ;
+  align-items: center;
+  flex-direction: row;
+  width: 280px;
+  position: fixed;
+  top: 2%;
+  left: 80%;
+  transform: translateX(110%);
+  transition: transform 0.3s ease-in-out;
+  padding: 20px 15px;
+  color: white;
+  border-radius: 4px;
+  z-index: 9999;
+
+}
+.oculto img{
+  margin-right: 10px;
+
+}
+
+
+.mostrar {
+  transform: translateX(-20%);
+}
+
+.barra_y_btn{
+  margin: 2% auto 1%  auto;
+  width: 50%;
+  height: 35px;
+  border-radius: 40px;
+  padding: 0px 25px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  
+}
+.box {
+  background-color: white;
+  width: 500px;
+  height: 35px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 15px #609966;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 25px;
+}
+
+
+/* Estilos del botón desplegable */
+.sort {
+  position: relative;
+  display: inline-block;
+  
+  
+}
+
+.dropbtn {
+  width: 100px;
+  height: 35px;
+  background-color: white;
+  color: black;
+  border-radius: 40px;
+  box-shadow: 5px 5px 15px #609966;
+  padding: 5px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease; /* Transición en el color de fondo */
+}
+
+/* Estilos de la lista desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición en la opacidad */
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: background-color 0.5s ease; /* Transición en el color de fondo */
+
+}
+
+.dropdown-content button:hover {
+  background-color: #609966;
+  color: white;
+}
+
+.sort:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+}
+
+.sort:hover .dropbtn {
+  background-color: #3e8e41;
+  color: white;
+}
+
+
+
+
 
 
 

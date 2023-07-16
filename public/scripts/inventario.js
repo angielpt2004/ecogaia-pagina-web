@@ -1,4 +1,7 @@
 import { on_session } from "./index.js";
+import { mostrarOcultoSuccess } from "./index.js";
+import { mostrarOcultoWarning } from "./index.js";
+import { mostrarOcultoError } from "./index.js";
 
 $(document).ready(function () {
   var tabla_p = $("#tabla-productos")[0];
@@ -85,14 +88,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (response) {
-              alert(response);
+              mostrarOcultoSuccess(response);
             },
             error: function () {
-              alert("Failed to upload image!");
+              mostrarOcultoError("Failed to upload image!");
             },
           });
         } else {
-          alert(res);
+          mostrarOcultoSuccess(res);
         }
       },
     });
@@ -125,7 +128,7 @@ $("#actProducto").submit(function (event) {
           type: "PUT",
           data: newprod,
           success: (res) => {
-            alert(res)
+            mostrarOcultoSuccess(res)
           }
         })
       }
@@ -151,10 +154,10 @@ $("#actProducto").submit(function (event) {
               contentType: false,
               processData: false,
               success: function (response) {
-                alert(res2)
+                mostrarOcultoSuccess(res2)
               },
               error: function () {
-                alert("Failed to upload image!");
+                mostrarOcultoError("Failed to upload image!");
               },
             });
           }
@@ -182,7 +185,7 @@ $("#userAct").submit(function (event) {
     data: newuser,
     datatype: "text/plain",
     success: (res) => {
-      alert(res)
+      mostrarOcultoSuccess(res)
     },
   });
 });

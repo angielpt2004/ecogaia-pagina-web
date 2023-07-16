@@ -1,3 +1,4 @@
+
 function add(codigo, id) {
   $.ajax({
     url: "http://localhost:8080/usuario/" + id,
@@ -14,13 +15,13 @@ function add(codigo, id) {
         success: (res) => {
           if (res) {
             alerta.style.background = "#EBD166";
-            mostrarOculto("El producto se agrego a tus favoritos");
+            mostrarOcultoSuccess("El producto se agrego a tus favoritos");
           } else if (!res) {
             alerta.style.background = "#EBD166";
-            mostrarOculto("El producto se elimino de tus favoritos");
+            mostrarOcultoSuccess("El producto se elimino de tus favoritos");
           } else {
             alerta.style.background = "#EBD166";
-            mostrarOculto("No se puedo agregar el producto a tus favoritos");
+            mostrarOcultoWarning("No se puedo agregar el producto a tus favoritos");
           }
         },
       });
@@ -162,17 +163,39 @@ function resCar(id, total, nombre, codigo) {
   });
 }
 
-function mostrarOculto(frase) {
+function mostrarOcultoSuccess(frase){
   var alerta = document.getElementById("alerta");
-
-  alerta.innerHTML ="<img src='public/assets/alert_error.png'><span id='mensaje'></span>";
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_success.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#198754"
   var mensaje = document.getElementById("mensaje");
   alerta.classList.add("mostrar");
-  mensaje.innerHTML = frase;
-  setTimeout(function () {
-    alerta.classList.remove("mostrar");
-  }, 3000);
-}
+  mensaje.innerHTML=frase
+    setTimeout(function() {
+      alerta.classList.remove("mostrar");
+    }, 3000);
+  }
+  function mostrarOcultoWarning(frase){
+  var alerta = document.getElementById("alerta");
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_danger.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#ffc107"
+  var mensaje = document.getElementById("mensaje");
+  alerta.classList.add("mostrar");
+  mensaje.innerHTML=frase
+    setTimeout(function() {
+      alerta.classList.remove("mostrar");
+    }, 3000);
+  }
+  function mostrarOcultoError(frase){
+  var alerta = document.getElementById("alerta");
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_error.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#dc3545"
+  var mensaje = document.getElementById("mensaje");
+  alerta.classList.add("mostrar");
+  mensaje.innerHTML=frase
+    setTimeout(function() {
+      alerta.classList.remove("mostrar");
+    }, 3000);
+  }
 
 
 function actProd(codigo) {

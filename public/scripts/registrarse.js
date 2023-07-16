@@ -1,5 +1,4 @@
-import { on_session } from "./index.js";
-import { mostrarOculto } from "./index.js";
+import { mostrarOcultoWarning, on_session } from "./index.js";
 
 $(document).ready((e) => {
   $("#sign_in").on("click", () => {
@@ -13,8 +12,7 @@ $(document).ready((e) => {
     };
     
     if (user.usu_nombre == "" || user.usu_telefono == "" || user.usu_direccion == "" || user.usu_correo == "" || user.usu_contrasenia == "") {
-      alerta.style.background="#dc3545"
-      mostrarOculto("Completar todos los campos")
+      mostrarOcultoWarning("Completar todos los campos")
     } else {
         $.ajax({
             url: "http://localhost:8080/insertarUsuario",
@@ -22,8 +20,7 @@ $(document).ready((e) => {
             data: user,
             dataType: "text",
             success: (res) => {
-                alerta.style.background="#dc3545"
-                mostrarOculto("Completar todos los campos")
+                mostrarOcultoWarning("Completar todos los campos")
             },
           });
     }
