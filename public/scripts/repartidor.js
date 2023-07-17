@@ -32,7 +32,7 @@ $(document).ready(function () {
                         datatype: "JSON",
                         success: (res) => {
                             res.forEach((prod) => {
-                                $("#p" + rep.id_Usuario)[0].innerHTML += '<div class="det-rep"><img width="100" src="https://frutosalvaje.com/wp-content/uploads/2021/11/Cepillo-de-Bambu_1-1-1536x1536.png" alt=""><div><p>' + prod.prod_nombre + '</p><p>' + prod.prod_precio + '</p><p>' + prod.prod_cantidad + '</p><p>' + prod.prod_categoria + '</p></div></div>'
+                                $("#p" + rep.id_Usuario)[0].innerHTML += '<div class="det-rep"><img width="100" src="'+prod.prod_imagen+'" alt=""><div><p>' + prod.prod_nombre + '</p><p>' + prod.prod_precio + '</p><p>' + prod.prod_cantidad + '</p><p>' + prod.prod_categoria + '</p></div></div>'
                             })
                         }
                     })
@@ -71,7 +71,7 @@ $(document).ready(function () {
                         datatype: "JSON",
                         success: (res) => {
                             res.forEach((prod) => {
-                                $("#content" + rep.venta_Codigo)[0].innerHTML += '<div class="det-rep"><img width="100" src="https://frutosalvaje.com/wp-content/uploads/2021/11/Cepillo-de-Bambu_1-1-1536x1536.png" alt=""><div><p>' + prod.prod_nombre + '</p><p>' + prod.prod_precio + '</p><p>' + prod.prod_cantidad + '</p><p>' + prod.prod_categoria + '</p></div></div>'
+                                $("#content" + rep.venta_Codigo)[0].innerHTML += '<div class="det-rep"><img width="100" src="'+prod.prod_imagen+'" alt=""><div><p>' + prod.prod_nombre + '</p><p>' + prod.prod_precio + '</p><p>' + prod.prod_cantidad + '</p><p>' + prod.prod_categoria + '</p></div></div>'
                             })
                         }
                     })
@@ -82,5 +82,4 @@ $(document).ready(function () {
 
     listarnormal ()
     listarresponsive ()
-
 })
