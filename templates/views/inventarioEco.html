@@ -150,6 +150,7 @@
     <div class="invt-responsive" id="cartas_producto">
 
 
+
     </div>
 
     <div class="scrollable-table tabla-inventario" id="scroll-products">
@@ -171,51 +172,54 @@
 
     <!-- Formularios inventario Empresa -->
 
-    <div class="crud-invt">
+    <div class="crud-invt mt-5">
 
       <!-- Insertar -->
 
       <div class="actualizar-invt">
         <form id="insertProducto" method="post" class="formulario-act" action="">
-          <h2 class="mt-5" >Agregar</h2>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-user"></i>
+          <h2 class="mt-5">Agregar</h2>
+
+          <div class="input-ingresar">
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" id="prod_Nombre" placeholder="Nombre Completo" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" id="prod_Nombre" placeholder="Nombre Completo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="file" name="file" placeholder="Imagen" id="prod_Imagen" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-envelope"></i>
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-solid fa-layer-group"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Categoria" id="prod_Categoria" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="file" name="file" placeholder="Imagen" id="prod_Imagen" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-solid fa-calculator"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Cantidad" id="prod_Cantidad" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-tent"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Categoria" id="prod_Categoria" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-unlock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Cantidad" id="prod_Cantidad" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Precio" id="prod_Precio" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Precio" id="prod_Precio" />
+              </div>
             </div>
           </div>
 
@@ -232,45 +236,48 @@
 
       <div class="actualizar-invt">
         <form id="actProducto" class="formulario-act" action="">
-          <h2 class="mt-5" >Actualizar</h2>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-user"></i>
+          <h2 class="mt-5">Actualizar</h2>
+
+          <div class="input-ingresar">
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" id="actProdNombre" placeholder="Nombre Completo" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" id="actProdNombre" placeholder="Nombre Completo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="file" name="file" placeholder="Imagen" id="actProdImagen" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-envelope"></i>
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-solid fa-layer-group"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Categoria" id="actProdCategoria" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="file" name="file" placeholder="Imagen" id="actProdImagen" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-solid fa-calculator"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Cantidad" id="actProdCantidad" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-tent"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Categoria" id="actProdCategoria" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-unlock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Cantidad" id="actProdCantidad" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Precio" id="actProdPrecio" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Precio" id="actProdPrecio" />
+              </div>
             </div>
           </div>
 
@@ -284,17 +291,15 @@
 
     </div>
 
-    <h2 class="mt-5 mb-5 ">Usuarios</h2>
+    <h2 class="mt-5 mb-5 nombre-inventario">Usuarios</h2>
 
     <div class="cuerpo-carrusel">
       <div class="wrapper">
 
-
-        <i id="left" class=" fa-solid fa-angle-left"></i>
         <ul class="carousel" id="carrusel_u">
 
         </ul>
-        <i id="right" class="fa-solid fa-angle-right"></i>
+
       </div>
     </div>
 
@@ -307,44 +312,48 @@
       <div class="actualizar-invt">
         <form class="formulario-act" action="">
           <h2>Agregar</h2>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-user"></i>
+
+
+          <div class="input-ingresar">
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" id="usu_nombre" placeholder="Nombre Completo" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" id="usu_nombre" placeholder="Nombre Completo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Correo" id="usu_correo" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-envelope"></i>
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-tent"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Direccion" id="usu_direccion" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Correo" id="usu_correo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-unlock"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="password" placeholder="Contraseña" id="usu_contrasenia" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-tent"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Direccion" id="usu_direccion" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-unlock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="password" placeholder="Contraseña" id="usu_contrasenia" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Telefono" id="usu_telefono" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Telefono" id="usu_telefono" />
+              </div>
             </div>
           </div>
 
@@ -361,52 +370,55 @@
       <div class="actualizar-invt">
         <form class="formulario-act" action="" id="userAct" method="post">
           <h2>Actualizar</h2>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-user"></i>
+
+          <div class="input-ingresar">
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" id="actUsuNombre" placeholder="Nombre Completo" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" id="actUsuNombre" placeholder="Nombre Completo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Correo" id="actUsuCorreo" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-envelope"></i>
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-tent"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Direccion" id="actUsuDireccion" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Correo" id="actUsuCorreo" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-unlock"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Rol" id="actRol" />
+              </div>
             </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-tent"></i>
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-lock"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="password" placeholder="Contraseña" id="actUsuContrasenia" />
+              </div>
             </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Direccion" id="actUsuDireccion" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-unlock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Rol" id="actRol" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="password" placeholder="Contraseña" id="actUsuContrasenia" />
-            </div>
-          </div>
-          <div class="input-div">
-            <div class="i">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div>
-              <input class="inputIn" type="text" placeholder="Telefono" id="actUsuTelefono" />
+            <div class="input-div">
+              <div class="i">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <input class="inputIn" type="text" placeholder="Telefono" id="actUsuTelefono" />
+              </div>
             </div>
           </div>
 

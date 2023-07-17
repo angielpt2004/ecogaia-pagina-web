@@ -81,6 +81,7 @@ $(document).ready(function () {
     success: function (respuesta) {
       respuesta.forEach(function (invt) {
         carrusel_u.innerHTML +=
+        
           '<li class="card-invt">' +
           '<div class="img"><img src="../../public/assets/persona.jpg" alt="img" draggable="false"></div>' +
           '<h2 class="name">' + invt.usu_nombre + '</h2>' +
@@ -235,14 +236,16 @@ $("#userAct").submit(function (event) {
 
 const carousel = document.querySelector(".carousel");
 const arrowBtns = document.querySelectorAll(".wrapper i");
-const firstCardWidth = carousel.querySelector(".card-invt");
+const firstCardWidth = carousel.querySelector("card-invt").offsetWidth;
 
 let isDragging = false, startX, startScrollLeft;
 
 arrowBtns.forEach(btn => {
+
   btn.addEventListener("click", () => {
     carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
-  });
+  })
+
 });
 
 const dragStart = (e) => {
