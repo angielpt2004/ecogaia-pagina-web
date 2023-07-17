@@ -312,6 +312,12 @@ p.price {
   margin-inline: 2%;
   transition: all 0.5s ease;
 }
+.descripcion{
+  display: flex;
+  justify-content: center;
+  color: #198754;
+}
+
 
 .categoria img {
   z-index: 3;
@@ -1848,6 +1854,9 @@ h3{
     width: 50px;
     height: 50px;
 
+  }
+  .categoria-contenedor p{
+    font-size: 11px;
   }
 
   /*productos----------------------------------------------------------------------------*/
