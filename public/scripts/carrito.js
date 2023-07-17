@@ -1,3 +1,5 @@
+import { mostrarOcultoError, mostrarOcultoSuccess } from ".";
+
 $("#op4").on("click", function () {
   var user = sessionStorage.getItem("user");
   tablaCarrito.innerHTML = ""
@@ -24,7 +26,7 @@ $("#op4").on("click", function () {
             '</td><td><i class="fa fa-trash" onclick="deleteCar(' +
             cotiza.codigo_carrito +
             ')"></i></td></tr>'+
-            '<!-- Modal --><div  class="modal fade w-25"  id="car'+cotiza.codigo_carrito+'"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body">' +
+            '<!-- Modal --><div  class="modal fade "  id="car'+cotiza.codigo_carrito+'"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body">' +
             "<h1 class='text-center text-success'>" +
             cotiza.Prod_Nombre +
             "</h1><p class='contenido '>$" +
@@ -46,9 +48,9 @@ $("#comprar").on("click", () => {
     datatype: "JSON",
     success: (res) => {
       if (res == "Se registro una compra de sus productos") {
-        alert(res+" en perfil>compras")
+        mostrarOcultoSuccess(res+" en perfil>compras")
       } else {
-        alert(res)
+        mostrarOcultoError(res)
       }
     },
   });

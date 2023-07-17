@@ -1,5 +1,7 @@
 import { on_session } from "./index.js";
-import { mostrarOculto } from "./index.js";
+import { mostrarOcultoSuccess } from "./index.js";
+import { mostrarOcultoWarning } from "./index.js";
+import { mostrarOcultoError } from "./index.js";
 
 $(document).ready(() => {
   if(!on_session()) {
@@ -35,6 +37,38 @@ $(document).ready(() => {
   }
 
   listar()
+
+  $(".ordenar").on("click", (e) => {
+      $.ajax({
+        url: "http://localhost:8080/ordenarTip" + e.target.textContent,
+        type: "GET",
+        datatype: "JSON",
+        success: (res) => {
+          if (res.length == 0){
+            container.innerHTML= '<p>No se encontraron resultados para "'+titulo+'"</p>'
+          } else {
+            container.innerHTML=""
+            res.forEach((blog) => {
+              let cuerpo = ""
+              let titulo = ""
+              if(blog.cuerpo.length>236){
+                cuerpo = blog.cuerpo.slice(0,234) + " ..."
+              } else {
+                cuerpo = blog.cuerpo
+              }
+      
+              if (blog.titulo.length > 20) {
+                titulo = blog.titulo.slice(0,21) + " ..."
+              } else {
+                titulo = blog.titulo
+              }
+              container.innerHTML += "<div class='blog-box' id='tip"+blog.codigo_tip+"'><div class='blog-text2'><span>"+blog.fecha+"</span><p>"+blog.comp_usuario+"</p><img src='../../public/assets/imgblosgs.jpg' class='blog_in' alt='' /><h2>"+titulo+"</h2><p>"+cuerpo+"</p></div></div>"
+            })
+          }
+        },
+      })
+  })
+
 
   $("#blog-search").on("input", (e) => {
     const titulo = e.target.value
@@ -84,8 +118,7 @@ $(document).ready(() => {
       cuerpo: $("#content_blog").val(),
     };
     if (blog.titulo == "" || blog.content == "") {
-      alerta.style.background="#EBD166"
-      mostrarOculto("Completar todos los campos")
+      mostrarOcultoWarning("Completar todos los campos")
   } else {
 
     $.ajax({
@@ -95,12 +128,10 @@ $(document).ready(() => {
       dataType: "text",
       success: (res) => {
         if(res != "No se agrego el tip"){
-          alerta.style.background="#EBD166"
-          mostrarOculto(res)
+          mostrarOcultoError(res)
           window.location.href = "/templates/views/Blog.html"
         }else{
-          alerta.style.background="#EBD166"
-          mostrarOculto(res)
+          mostrarOcultoSuccess(res)
         }
         console.log(res);
       },

@@ -21,12 +21,12 @@ $(document).ready(() => {
                     favState = "fa-solid";
                   }
                 });
-                productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='https://cdn.pixabay.com/photo/2022/02/04/08/59/soap-6992365_640.jpg'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
+                productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='"+producto.prod_Imagen+"'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
                   "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><button type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
                   "'>Mas información</button>"; 
-                  productos.innerHTML += '<!-- Modal --><div  class="modal fade w-25"  id="exampleModal' + producto.prod_Codigo +
-                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header2"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
-                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="https://frutosalvaje.com/wp-content/uploads/2021/11/Cepillo-de-Bambu_1-1-1536x1536.png"alt=""/><p class="precio">' + producto.prod_Categoria +
+                  productos.innerHTML += '<!-- Modal --><div  class="modal fade "  id="exampleModal' + producto.prod_Codigo +
+                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered "><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
+                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="'+producto.prod_Imagen+'"alt=""/><p class="precio">' + producto.prod_Categoria +
                   "</p><h1 class='text-center text-success'>" + producto.prod_Nombre + "</h1><p class='contenido '>$" + producto.prod_Precio + '</p><button type="button" onclick="addCar(' +
                   "'" + producto.prod_Codigo + "','" + sessionStorage.getItem("user") + "'" + ')" class="btn btn-success">Agregar a Carrito</button></div></div></div></div></div></div>';
               },
@@ -37,6 +37,43 @@ $(document).ready(() => {
     };
 
     listar();
+
+    $(".ordenar").on("click", (e) => {
+        $.ajax({
+          url: "http://localhost:8080/ordenarProd" + e.target.textContent,
+          type: "GET",
+          datatype: "JSON",
+          success: (res) => {
+            productos.innerHTML = "";
+            res.forEach((producto) => {
+              var favState = "fa-regular";
+              $.ajax({
+                url: "http://localhost:8080/favoritosUsuario/" + user,
+                type: "GET",
+                datatype: "JSON",
+                success: (response) => {
+                  response.forEach((res) => {
+                    if (res.prod_Codigo == producto.prod_Codigo) {
+                      favState = "fa-solid";
+                    }
+                  });
+                  productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='"+producto.prod_Imagen+"'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
+                  "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><button type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
+                  "'>Mas información</button>"; 
+                  productos.innerHTML += '<!-- Modal --><div  class="modal fade "  id="exampleModal' + producto.prod_Codigo +
+                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered "><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
+                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="'+producto.prod_Imagen+'"alt=""/><p class="precio">' + producto.prod_Categoria +
+                  "</p><h1 class='text-center text-success'>" + producto.prod_Nombre + "</h1><p class='contenido '>$" + producto.prod_Precio + '</p><button type="button" onclick="addCar(' +
+                  "'" + producto.prod_Codigo + "','" + sessionStorage.getItem("user") + "'" + ')" class="btn btn-success">Agregar a Carrito</button></div></div></div></div></div></div>';
+              },
+              });
+            });
+          },
+        });
+      });
+
+    
+
 
     $("#search_product").on("input", (e) => {
       const nombre = e.target.value;
@@ -62,15 +99,15 @@ $(document).ready(() => {
                       favState = "fa-solid";
                     }
                   });
-                  productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='https://cdn.pixabay.com/photo/2022/02/04/08/59/soap-6992365_640.jpg'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
-                  "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
+                  productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='"+producto.prod_Imagen+"'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
+                  "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><button type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
                   "'>Mas información</button>"; 
-                  productos.innerHTML += '<!-- Modal --><div  class="modal fade w-25"  id="exampleModal' + producto.prod_Codigo +
-                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
-                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="https://frutosalvaje.com/wp-content/uploads/2021/11/Cepillo-de-Bambu_1-1-1536x1536.png"alt=""/><p class="precio">' + producto.prod_Categoria +
+                  productos.innerHTML += '<!-- Modal --><div  class="modal fade "  id="exampleModal' + producto.prod_Codigo +
+                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered "><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
+                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="'+producto.prod_Imagen+'"alt=""/><p class="precio">' + producto.prod_Categoria +
                   "</p><h1 class='text-center text-success'>" + producto.prod_Nombre + "</h1><p class='contenido '>$" + producto.prod_Precio + '</p><button type="button" onclick="addCar(' +
                   "'" + producto.prod_Codigo + "','" + sessionStorage.getItem("user") + "'" + ')" class="btn btn-success">Agregar a Carrito</button></div></div></div></div></div></div>';
-                },
+              },
               });
             });
           },
@@ -102,12 +139,12 @@ $(document).ready(() => {
                     favState = "fa-solid";
                   }
                 });
-                productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='https://cdn.pixabay.com/photo/2022/02/04/08/59/soap-6992365_640.jpg'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
-                  "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
+                productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='"+producto.prod_Imagen+"'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
+                  "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><button type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
                   "'>Mas información</button>"; 
-                  productos.innerHTML += '<!-- Modal --><div  class="modal fade w-25"  id="exampleModal' + producto.prod_Codigo +
-                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close"data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
-                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="https://frutosalvaje.com/wp-content/uploads/2021/11/Cepillo-de-Bambu_1-1-1536x1536.png"alt=""/><p class="precio">' + producto.prod_Categoria +
+                  productos.innerHTML += '<!-- Modal --><div  class="modal fade "  id="exampleModal' + producto.prod_Codigo +
+                  '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered "><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
+                  "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="'+producto.prod_Imagen+'"alt=""/><p class="precio">' + producto.prod_Categoria +
                   "</p><h1 class='text-center text-success'>" + producto.prod_Nombre + "</h1><p class='contenido '>$" + producto.prod_Precio + '</p><button type="button" onclick="addCar(' +
                   "'" + producto.prod_Codigo + "','" + sessionStorage.getItem("user") + "'" + ')" class="btn btn-success">Agregar a Carrito</button></div></div></div></div></div></div>';
               },
@@ -117,6 +154,46 @@ $(document).ready(() => {
       });
     }
   });
+});
+
+$(".ordenar").on("click", (e) => {
+  on_session();
+
+  if (window.location.pathname == "/templates/views/index.html") {
+    const productos = document.getElementById("productos");
+    var user = sessionStorage.getItem("user");
+    $.ajax({
+      url: "http://localhost:8080/ordenarProd" + e.target.textContent,
+      type: "GET",
+      datatype: "JSON",
+      success: (res) => {
+        productos.innerHTML = "";
+        res.forEach((producto) => {
+          var favState = "fa-regular";
+          $.ajax({
+            url: "http://localhost:8080/favoritosUsuario/" + user,
+            type: "GET",
+            datatype: "JSON",
+            success: (response) => {
+              response.forEach((res) => {
+                if (res.prod_Codigo == producto.prod_Codigo) {
+                  favState = "fa-solid";
+                }
+              });
+              productos.innerHTML += "<div class='producto mx-4 mb-3' id='producto'><img  src='"+producto.prod_Imagen+"'  alt='producto'  /><h1 class='articulos text-center text-success'>" + producto.prod_Nombre +
+              "</h1><p>$" + producto.prod_Precio + "</p><!-- Button trigger modal --><button type='button' class='btn btn-success mb-2' data-bs-toggle='modal'  data-bs-target='#exampleModal" + producto.prod_Codigo +
+              "'>Mas información</button>"; 
+              productos.innerHTML += '<!-- Modal --><div  class="modal fade "  id="exampleModal' + producto.prod_Codigo +
+              '"  tabindex="-1"  aria-labelledby="exampleModalLabel"  aria-hidden="true"><div class="modal-dialog modal-dialog-centered "><div class="modal-content"><div class="modal-header"><h1 class="modal-title fs-5 text-success"id="exampleModalLabel">Mas información</h1><button type="button"class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button></div><div class="modal-body"><i onclick="add(\''  + producto.prod_Codigo +
+              "','" + sessionStorage.getItem("user") + "'" + ')" class="' + favState + ' fa-star"></i><img class="producto_img"src="'+producto.prod_Imagen+'"alt=""/><p class="precio">' + producto.prod_Categoria +
+              "</p><h1 class='text-center text-success'>" + producto.prod_Nombre + "</h1><p class='contenido '>$" + producto.prod_Precio + '</p><button type="button" onclick="addCar(' +
+              "'" + producto.prod_Codigo + "','" + sessionStorage.getItem("user") + "'" + ')" class="btn btn-success">Agregar a Carrito</button></div></div></div></div></div></div>';
+          },
+          });
+        });
+      },
+    });
+  }
 });
 
 window.addEventListener('resize', () => {
@@ -228,17 +305,39 @@ export const off_session = () => {
   );
 };
 
-export function mostrarOculto(frase){
+export function mostrarOcultoSuccess(frase){
   var alerta = document.getElementById("alerta");
-
-  alerta.innerHTML= "<img src='../../public/assets/alert_error.png'><span id='mensaje'></span>"
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_success.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#198754"
   var mensaje = document.getElementById("mensaje");
   alerta.classList.add("mostrar");
-    mensaje.innerHTML=frase
+  mensaje.innerHTML=frase
     setTimeout(function() {
       alerta.classList.remove("mostrar");
     }, 3000);
-}
+  }
+  export function mostrarOcultoWarning(frase){
+  var alerta = document.getElementById("alerta");
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_danger.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#ffc107"
+  var mensaje = document.getElementById("mensaje");
+  alerta.classList.add("mostrar");
+  mensaje.innerHTML=frase
+    setTimeout(function() {
+      alerta.classList.remove("mostrar");
+    }, 3000);
+  }
+  export function mostrarOcultoError(frase){
+  var alerta = document.getElementById("alerta");
+  alerta.innerHTML= "<img id='img_alert' src='../../public/assets/alert_error.png'><span id='mensaje'></span>"
+  alerta.style.backgroundColor="#dc3545"
+  var mensaje = document.getElementById("mensaje");
+  alerta.classList.add("mostrar");
+  mensaje.innerHTML=frase
+    setTimeout(function() {
+      alerta.classList.remove("mostrar");
+    }, 3000);
+  }
 
 $(".btn-hamburguesa").on("click", () => {
   $(".barra")[0].style.display = "block";
